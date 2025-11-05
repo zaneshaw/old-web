@@ -259,6 +259,16 @@ code {
 	color: #ffffffff;
 }
 
+.spoiler {
+	color: black;
+	background-color: black;
+	transition: 150ms;
+}
+
+.spoiler:hover {
+	color: white;
+}
+
 #oneko-spawn {
 	position: absolute;
 	right: 24px;
@@ -315,8 +325,6 @@ code {
 }
 
 #email {
-	background-color: black;
-	color: white;
 	padding: 0px 5px;
 	user-select: none;
 	cursor: url("img/cursors/cursor_error.png") 7 7, not-allowed;
