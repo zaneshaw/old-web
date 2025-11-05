@@ -95,6 +95,10 @@ main {
 	gap: 20px;
 }
 
+p {
+	margin-bottom: 0px;
+}
+
 h1,
 h2,
 h3,
@@ -102,7 +106,6 @@ h4,
 h5,
 h6,
 b,
-i,
 a {
 	color: black;
 }
@@ -170,6 +173,14 @@ nav>a:hover {
 	-moz-box-shadow: 5px 5px 0px 0px rgba(165, 116, 168, 0.5);
 }
 
+nav>a.nav-external::after {
+	content: "🡭";
+	position: absolute;
+	vertical-align: top;
+	top: -3px;
+	right: 1px;
+}
+
 code {
 	font-size: 16px;
 }
@@ -180,15 +191,20 @@ code {
 }
 
 .button-88x31 {
-	background-color: hsl(0, 0%, 80%);
 	width: 88px;
 	height: 31px;
+}
+
+.button-88x31>* {
+	width: 100%;
+	height: 100%;
 	transition-duration: 150ms;
 }
 
-.button-88x31:hover {
+.button-88x31:hover>* {
 	scale: 1.1;
 	transform: rotate(1.5deg) translateY(-2px) translateX(1px);
+	z-index: 2;
 }
 
 .unstyled-ul {
@@ -204,6 +220,43 @@ code {
 .link:hover {
 	background-color: #a574a8;
 	color: white;
+}
+
+.hover-text {
+	position: relative;
+	display: inline-block;
+	height: 20px;
+	cursor: url("img/cursors/cursor_pointer.png"), pointer;
+}
+
+.hover-text::before,
+.hover-text::after {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+}
+
+.hover-text::before {
+	content: attr(data-text);
+	opacity: 1;
+	color: black;
+	text-decoration: underline;
+}
+
+.hover-text::after {
+	content: attr(data-hover);
+	width: 0px;
+	background-color: #a574a8;
+	color: #ffffff00;
+	transition-duration: 150ms;
+	transition-property: width, color;
+}
+
+.hover-text:hover::after {
+	opacity: 1;
+	width: 95px;
+	color: #ffffffff;
 }
 
 #oneko-spawn {
@@ -244,7 +297,7 @@ code {
 	box-sizing: border-box; */
 }
 
-#creare-button {
+#creare-button>span {
 	background-color: #080808;
 	color: #925eff;
 	font-family: monospace;
@@ -266,7 +319,7 @@ code {
 	color: white;
 	padding: 0px 5px;
 	user-select: none;
-	cursor: url("img/cursors/cursor_error.png"), not-allowed;
+	cursor: url("img/cursors/cursor_error.png") 7 7, not-allowed;
 }
 
 footer>#footer-center {
@@ -310,6 +363,12 @@ footer>#footer-center {
 	height: 100vh;
 	pointer-events: none;
 	visibility: hidden;
+}
+
+#badge-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 3px;
 }
 
 @keyframes water-scroll {

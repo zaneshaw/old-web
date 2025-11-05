@@ -38,8 +38,8 @@ let template = `<div id="content">
 		<nav>
 			<a href="index.html">me</a>
 			<a href="stuff.html">stuff</a>
-			<a href="https://squidee.dev/blog">blog</a>
-			<a href="https://squidee.dev/guestbook">guestbook</a>
+			<a href="https://squidee.dev/blog" class="nav-external">blog</a>
+			<a href="https://squidee.dev/guestbook" class="nav-external">guestbook</a>
 		</nav>
 		<main class="container">%COOL MAIN CONTENT%</main>
 	</div>
@@ -74,7 +74,7 @@ let template = `<div id="content">
 				<a href="https://2275.nekoweb.org/" target="_blank" class="button-88x31"><img src="img/badges/88x31_2275.gif" alt="2275 THE ENIGMATIC"></a>
 				<a href="https://milkbones.nekoweb.org/" target="_blank" class="button-88x31"><img src="img/badges/88x31_milkbones.gif" alt="milkbones"></a>
 				<a href="https://bekianee.nekoweb.org" target="_blank" class="button-88x31"><img src="img/badges/88x31_beki.gif" alt="beki"></a>
-				<a href="https://thecreare.dev/" target="_blank" class="button-88x31" id="creare-button">=^･ω･^=</a>
+				<a href="https://thecreare.dev/" target="_blank" class="button-88x31" id="creare-button"><span>=^･ω･^=</span></a>
 			</div>
 		</div>
 	</div>
@@ -85,9 +85,9 @@ let template = `<div id="content">
 	</a>
 	<div class="small" id="footer-center">
 		<span>🦑</span>
-		<span>created 4 Nov 2025</span>
+		<span>created <i>4 Nov 2025</i></span>
 		<span>🦑</span>
-		<span>last updated 5 Nov 2025</span>
+		<span>last updated <i>5 Nov 2025</i></span>
 		<span>🦑</span>
 	</div>
 	<div id="oneko-spawn"></div>
