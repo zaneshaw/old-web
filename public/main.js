@@ -17,23 +17,22 @@ let template = `<div id="content">
 				<img src="img/zanesquid3_small.png" alt="me with a squid hat">
 			</a>
 			<div>
-				<h4>my button</h4>
+				<h2>my button</h2>
 				<a class="button-88x31"><img src="img/badges/88x31_squidee.gif" alt="squidee"></a>
 				<textarea rows="3" onclick="this.select()" class="hide-scroll-buttons" style="resize: none; width: 100%;">${badgeSnippet}</textarea>
 			</div>
 			<div>
-				<h4>sitemap</h4>
+				<h2>sitemap</h2>
 				<ul class="unstyled-ul">
-					<li><a href="index.html" class="small link">me</a></li>
-					<li><a href="stuff.html" class="small link">stuff</a></li>
-					<li><a href="playlist.html" class="small link">playlist</a></li>
-					<li><a href="updates.html" class="small link">updates</a></li>
+					<li><a href="index.html" class="link">me</a></li>
+					<li><a href="stuff.html" class="link">stuff</a></li>
+					<li><a href="playlist.html" class="link">playlist</a></li>
+					<li><a href="updates.html" class="link">updates</a></li>
 				</ul>
 			</div>
 			<a href="updates.html" id="whats-new">
-				<h4>what's new?</h4>
-				<b>05-11-25</b>
-				<span class="small" id="whats-new-text">a bunch of very intersting text goes here. i hope there isn't too much text.</span>
+				<h2>what's new?</h2>
+				<span id="whats-new-text">a bunch of very intersting text goes here. i hope there isn't too much text.</span>
 			</a>
 		</div>
 		<div class="container" id="settings">
@@ -53,29 +52,29 @@ let template = `<div id="content">
 	<div id="right">
 		<div class="container">
 			<div>
-				<h4>subdomains</h4>
+				<h2>subdomains</h2>
 				<ul class="unstyled-ul">
-					<li><a href="https://paste.squidee.dev/" target="_blank" class="small link">paste</a></li>
-					<li><a href="https://workoutcomposer.squidee.dev/" target="_blank" class="small link">workoutcomposer</a></li>
+					<li><a href="https://paste.squidee.dev/" target="_blank" class="link">paste</a></li>
+					<li><a href="https://workoutcomposer.squidee.dev/" target="_blank" class="link">workoutcomposer</a></li>
 				</ul>
 			</div>
 			<div>
-				<h4>stuff i'm doing</h4>
+				<h2>stuff i'm doing</h2>
 				<ul class="unstyled-ul">
-					<li><a href="https://github.com/zaneshaw/fishcove64/" target="_blank" class="small link">fishcove64</a></li>
-					<li><a href="https://www.youtube.com/@LiamStreamArchive/" target="_blank" class="small link">Liam Stream Archive</a></li>
+					<li><a href="https://github.com/zaneshaw/fishcove64/" target="_blank" class="link">fishcove64</a></li>
+					<li><a href="https://www.youtube.com/@LiamStreamArchive/" target="_blank" class="link">Liam Stream Archive</a></li>
 				</ul>
 			</div>
 			<div>
-				<h4>other links</h4>
+				<h2>other links</h2>
 				<ul class="unstyled-ul">
-					<li><a href="https://squidee.dev/" target="_blank" class="small link">squidee.dev</a></li>
-					<li><a href="https://github.com/zaneshaw/" target="_blank" class="small link">github</a></li>
-					<li><a href="https://x.com/zaneshaw_/" target="_blank" class="small link">twitter</a></li>
+					<li><a href="https://squidee.dev/" target="_blank" class="link">squidee.dev</a></li>
+					<li><a href="https://github.com/zaneshaw/" target="_blank" class="link">github</a></li>
+					<li><a href="https://x.com/zaneshaw_/" target="_blank" class="link">twitter</a></li>
 				</ul>
 			</div>
 			<div id="cool-sites">
-				<h4>cool sites</h4>
+				<h2>cool sites</h2>
 				<a href="https://dimden.dev/" target="_blank" class="button-88x31"><img src="img/badges/88x31_dimden.gif" alt="dimden"></a>
 				<a href="https://ribo.zone/" target="_blank" class="button-88x31"><img src="img/badges/88x31_ribose.png" alt="ribo zone"></a>
 				<a href="https://2275.nekoweb.org/" target="_blank" class="button-88x31"><img src="img/badges/88x31_2275.gif" alt="2275 THE ENIGMATIC"></a>
@@ -90,11 +89,11 @@ let template = `<div id="content">
 	<a href="http://www.acasystems.com/en/button-maker/" target="_blank">
 		<img src="img/badges/80x15_human_made.png" alt="human made 80x15 badge">
 	</a>
-	<div class="small" id="footer-center">
+	<div id="footer-center">
 		<span>🦑</span>
 		<span>created <i>4 Nov 2025</i></span>
 		<span>🦑</span>
-		<span>last updated <i>5 Nov 2025</i></span>
+		<span>last updated <i>6 Nov 2025</i></span>
 		<span>🦑</span>
 	</div>
 	<div id="oneko-spawn"></div>
