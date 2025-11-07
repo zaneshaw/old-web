@@ -32,7 +32,8 @@ let template = `<div id="content">
 			</div>
 			<a href="updates.html" id="whats-new">
 				<h2>what's new?</h2>
-				<span id="whats-new-text">a bunch of very intersting text goes here. i hope there isn't too much text.</span>
+				<span id="whats-new-text">07-11-25 new badge</span>
+				<span id="whats-new-text">06-11-25 smaller text</span>
 			</a>
 		</div>
 		<div class="container" id="settings">
