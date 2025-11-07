@@ -424,7 +424,7 @@ footer>#footer-center {
 	text-decoration: underline;
 }
 
-#whats-new>#whats-new-text {
+#whats-new li {
 	display: -webkit-box;
 	line-clamp: 3;
 	-webkit-line-clamp: 3;

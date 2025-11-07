@@ -32,8 +32,10 @@ let template = `<div id="content">
 			</div>
 			<a href="updates.html" id="whats-new">
 				<h2>what's new?</h2>
-				<span id="whats-new-text">07-11-25 new badge</span>
-				<span id="whats-new-text">06-11-25 smaller text</span>
+				<ul class="unstyled-ul">
+					<li>07-11-25 new badge</li>
+					<li>06-11-25 smaller text</li>
+				</ul>
 			</a>
 		</div>
 		<div class="container" id="settings">
@@ -64,6 +66,13 @@ let template = `<div id="content">
 				<ul class="unstyled-ul">
 					<li><a href="https://github.com/zaneshaw/fishcove64/" target="_blank" class="link">fishcove64</a></li>
 					<li><a href="https://www.youtube.com/@LiamStreamArchive/" target="_blank" class="link">Liam Stream Archive</a></li>
+				</ul>
+			</div>
+			<div>
+				<h2>friends</h2>
+				<ul class="unstyled-ul">
+					<li><a href="https://pincasplace.neocities.org/" target="_blank" class="link">pinca's place</a></li>
+					<li><a href="https://mackerel.dev/" target="_blank" class="link">mackereldev</a></li>
 				</ul>
 			</div>
 			<div>
