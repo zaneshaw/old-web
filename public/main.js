@@ -28,6 +28,7 @@ let template = `<div id="content">
 					<li><a href="stuff.html" class="link">stuff</a></li>
 					<li><a href="playlist.html" class="link">playlist</a></li>
 					<li><a href="updates.html" class="link">updates</a></li>
+					<li><a href="squid.html" class="link">squid</a></li>
 				</ul>
 			</div>
 			<a href="updates.html" id="whats-new">
@@ -108,10 +109,12 @@ let template = `<div id="content">
 	</div>
 	<div id="oneko-spawn"></div>
 </footer>
-<div class="water"><div></div></div>
-<div class="water" id="water-two"><div></div></div>
-<div id="underwater-effect"></div>
-<div id="squid"></div>`;
+<div id="screen-overlay">
+	<div class="water"><div></div></div>
+	<div class="water" id="water-two"><div></div></div>
+	<div id="underwater-effect"></div>
+	<a href="squid.html"><div id="squid"></div></a>
+</div>`;
 
 if (main.dataset["replaceme"] != undefined) {
 	template = template.replace("%COOL MAIN CONTENT%", main.innerHTML);
