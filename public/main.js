@@ -10,106 +10,115 @@ function saveSettings(settings) {
 	window.localStorage.setItem("settings", JSON.stringify(settings));
 }
 
-let template = `<div id="content">
-	<div id="left">
-		<div class="container">
-			<a href="index.html" id="hero-image">
-				<img src="img/zanesquid3_small.png" alt="me with a squid hat">
-			</a>
-			<div>
-				<h2>my badge</h2>
-				<a class="button-88x31"><img src="img/badges/88x31_squidee.gif" alt="squidee"></a>
-				<textarea rows="3" onclick="this.select()" class="hide-scroll-buttons" style="resize: none; width: 100%;">${badgeSnippet}</textarea>
+let layout =
+	/* HTML */
+	`<div id="content">
+			<div id="left">
+				<div class="container">
+					<a href="index.html" id="hero-image">
+						<img src="img/zanesquid3_small.png" alt="me with a squid hat" />
+					</a>
+					<div>
+						<h2>my badge</h2>
+						<a class="button-88x31"><img src="img/badges/88x31_squidee.gif" alt="squidee" /></a>
+						<textarea rows="3" onclick="this.select()" class="hide-scroll-buttons" style="resize: none; width: 100%;">${badgeSnippet}</textarea>
+					</div>
+					<div>
+						<h2>sitemap</h2>
+						<ul class="unstyled-ul">
+							<li><a href="index.html" class="link">me</a></li>
+							<li><a href="stuff.html" class="link">stuff</a></li>
+							<li><a href="playlist.html" class="link">playlist</a></li>
+							<li><a href="updates.html" class="link">updates</a></li>
+							<li><a href="squid.html" class="link">squid</a></li>
+						</ul>
+					</div>
+					<a href="updates.html" id="whats-new">
+						<h2>what's new?</h2>
+						<ul class="unstyled-ul">
+							<li>08-11-25 neocities</li>
+							<li>07-11-25 new badge</li>
+							<li>06-11-25 smaller text</li>
+						</ul>
+					</a>
+					<div id="settings">
+						<label><input type="checkbox" id="mouse-effect-toggle" /><img src="img/bubble.png" /></label>
+						<label><input type="checkbox" id="squid-toggle" /><img src="img/squid1.png" /></label>
+					</div>
+				</div>
 			</div>
-			<div>
-				<h2>sitemap</h2>
-				<ul class="unstyled-ul">
-					<li><a href="index.html" class="link">me</a></li>
-					<li><a href="stuff.html" class="link">stuff</a></li>
-					<li><a href="playlist.html" class="link">playlist</a></li>
-					<li><a href="updates.html" class="link">updates</a></li>
-					<li><a href="squid.html" class="link">squid</a></li>
-				</ul>
+			<div id="center">
+				<nav>
+					<a href="index.html">me</a>
+					<a href="stuff.html">stuff</a>
+					<a href="https://squidee.dev/blog" class="nav-external">blog</a>
+					<a href="https://squidee.dev/guestbook" class="nav-external">guestbook</a>
+				</nav>
+				%COOL MAIN CONTENT%
 			</div>
-			<a href="updates.html" id="whats-new">
-				<h2>what's new?</h2>
-				<ul class="unstyled-ul">
-					<li>08-11-25 neocities</li>
-					<li>07-11-25 new badge</li>
-					<li>06-11-25 smaller text</li>
-				</ul>
-			</a>
-			<div id="settings">
-				<label><input type="checkbox" id="mouse-effect-toggle" /><img src="img/bubble.png"></label>
-				<label><input type="checkbox" id="squid-toggle" /><img src="img/squid1.png"></label>
+			<div id="right">
+				<div class="container">
+					<div>
+						<h2>subdomains</h2>
+						<ul class="unstyled-ul">
+							<li><a href="https://paste.squidee.dev/" target="_blank" class="link">paste</a></li>
+							<li>
+								<a href="https://workoutcomposer.squidee.dev/" target="_blank" class="link">workoutcomposer</a>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<h2>stuff i'm doing</h2>
+						<ul class="unstyled-ul">
+							<li>
+								<a href="https://github.com/zaneshaw/fishcove64/" target="_blank" class="link">fishcove64</a>
+							</li>
+							<li>
+								<a href="https://www.youtube.com/@LiamStreamArchive/" target="_blank" class="link">Liam Stream Archive</a>
+							</li>
+						</ul>
+					</div>
+					<div class="badge-list">
+						<h2>friends</h2>
+						<a href="https://pincasplace.neocities.org/" target="_blank" class="button-88x31"><img src="img/badges/88x31_pinca.gif" alt="pinca" /></a>
+						<div><a href="https://mackerel.dev/" target="_blank" class="link">mackereldev</a></div>
+					</div>
+					<div class="badge-list">
+						<h2>cool sites</h2>
+						<a href="https://dimden.dev/" target="_blank" class="button-88x31"><img src="img/badges/88x31_dimden.gif" alt="dimden" /></a>
+						<a href="https://ribo.zone/" target="_blank" class="button-88x31"><img src="img/badges/88x31_ribose.png" alt="ribo zone" /></a>
+						<a href="https://2275.nekoweb.org/" target="_blank" class="button-88x31"><img src="img/badges/88x31_2275.gif" alt="2275 THE ENIGMATIC" /></a>
+						<a href="https://milkbones.nekoweb.org/" target="_blank" class="button-88x31"><img src="img/badges/88x31_milkbones.gif" alt="milkbones" /></a>
+						<a href="https://bekianee.nekoweb.org" target="_blank" class="button-88x31"><img src="img/badges/88x31_beki.gif" alt="beki" /></a>
+						<a href="https://thecreare.dev/" target="_blank" class="button-88x31" id="creare-button"><span>=^･ω･^=</span></a>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div id="center">
-		<nav>
-			<a href="index.html">me</a>
-			<a href="stuff.html">stuff</a>
-			<a href="https://squidee.dev/blog" class="nav-external">blog</a>
-			<a href="https://squidee.dev/guestbook" class="nav-external">guestbook</a>
-		</nav>
-		<main class="container">%COOL MAIN CONTENT%</main>
-	</div>
-	<div id="right">
-		<div class="container">
-			<div>
-				<h2>subdomains</h2>
-				<ul class="unstyled-ul">
-					<li><a href="https://paste.squidee.dev/" target="_blank" class="link">paste</a></li>
-					<li><a href="https://workoutcomposer.squidee.dev/" target="_blank" class="link">workoutcomposer</a></li>
-				</ul>
+		<footer class="container">
+			<a href="http://www.acasystems.com/en/button-maker/" target="_blank">
+				<img src="img/badges/80x15_human_made.png" alt="human made 80x15 badge" />
+			</a>
+			<div id="footer-center">
+				<span>🦑</span>
+				<span>created <i>4 Nov 2025</i></span>
+				<span>🦑</span>
+				<span>last updated <i>8 Nov 2025</i></span>
+				<span>🦑</span>
 			</div>
-			<div>
-				<h2>stuff i'm doing</h2>
-				<ul class="unstyled-ul">
-					<li><a href="https://github.com/zaneshaw/fishcove64/" target="_blank" class="link">fishcove64</a></li>
-					<li><a href="https://www.youtube.com/@LiamStreamArchive/" target="_blank" class="link">Liam Stream Archive</a></li>
-				</ul>
-			</div>
-			<div class="badge-list">
-				<h2>friends</h2>
-				<a href="https://pincasplace.neocities.org/" target="_blank" class="button-88x31"><img src="img/badges/88x31_pinca.gif" alt="pinca"></a>
-				<div><a href="https://mackerel.dev/" target="_blank" class="link">mackereldev</a></div>
-			</div>
-			<div class="badge-list">
-				<h2>cool sites</h2>
-				<a href="https://dimden.dev/" target="_blank" class="button-88x31"><img src="img/badges/88x31_dimden.gif" alt="dimden"></a>
-				<a href="https://ribo.zone/" target="_blank" class="button-88x31"><img src="img/badges/88x31_ribose.png" alt="ribo zone"></a>
-				<a href="https://2275.nekoweb.org/" target="_blank" class="button-88x31"><img src="img/badges/88x31_2275.gif" alt="2275 THE ENIGMATIC"></a>
-				<a href="https://milkbones.nekoweb.org/" target="_blank" class="button-88x31"><img src="img/badges/88x31_milkbones.gif" alt="milkbones"></a>
-				<a href="https://bekianee.nekoweb.org" target="_blank" class="button-88x31"><img src="img/badges/88x31_beki.gif" alt="beki"></a>
-				<a href="https://thecreare.dev/" target="_blank" class="button-88x31" id="creare-button"><span>=^･ω･^=</span></a>
-			</div>
-		</div>
-	</div>
-</div>
-<footer class="container">
-	<a href="http://www.acasystems.com/en/button-maker/" target="_blank">
-		<img src="img/badges/80x15_human_made.png" alt="human made 80x15 badge">
-	</a>
-	<div id="footer-center">
-		<span>🦑</span>
-		<span>created <i>4 Nov 2025</i></span>
-		<span>🦑</span>
-		<span>last updated <i>8 Nov 2025</i></span>
-		<span>🦑</span>
-	</div>
-	<div id="oneko-spawn"></div>
-</footer>
-<div id="screen-overlay">
-	<div class="water"><div></div></div>
-	<div class="water" id="water-two"><div></div></div>
-	<div id="underwater-effect"></div>
-	<a href="squid.html"><div id="squid"></div></a>
-</div>`;
+			<div id="oneko-spawn"></div>
+		</footer>
+		<div id="screen-overlay">
+			<div class="water"><div></div></div>
+			<div class="water" id="water-two"><div></div></div>
+			<div id="underwater-effect"></div>
+			<a href="squid.html"><div id="squid"></div></a>
+		</div>`;
 
-if (main.dataset["replaceme"] != undefined) {
-	template = template.replace("%COOL MAIN CONTENT%", main.innerHTML);
-	main.outerHTML = template;
+if (main.dataset["maincontent"] != undefined) {
+	delete main.dataset["maincontent"];
+	layout = layout.replace("%COOL MAIN CONTENT%", main.outerHTML);
+	main.outerHTML = layout;
 
 	const onekoScript = document.createElement("script");
 	onekoScript.src = "oneko.js";
@@ -123,7 +132,7 @@ if (main.dataset["replaceme"] != undefined) {
 const defaultSettings = {
 	mouse_effect: true,
 	squid: true,
-}
+};
 let settings = {};
 const settingsLS = window.localStorage.getItem("settings");
 if (settingsLS == null) {
