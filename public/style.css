@@ -45,7 +45,7 @@ body {
 	overflow: auto;
 }
 
-noscript {
+.warning {
 	visibility: visible;
 
 	display: flex;
