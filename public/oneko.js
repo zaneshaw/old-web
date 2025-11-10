@@ -144,7 +144,7 @@ function oneko() {
 		nekoEl.style.width = "32px";
 		nekoEl.style.height = "32px";
 		nekoEl.style.position = "fixed";
-		nekoEl.style.cursor = "url('img/cursors/cursor_pointer.png'), pointer";
+		nekoEl.style.cursor = "url('/assets/images/cursors/cursor_pointer.png'), pointer";
 		nekoEl.style.imageRendering = "pixelated";
 		nekoEl.style.left = `${nekoPosX - 16}px`;
 		nekoEl.style.top = `${nekoPosY - 16}px`;

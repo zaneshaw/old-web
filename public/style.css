@@ -14,6 +14,10 @@
 	src: url("/assets/fonts/Inter-Bold.woff2") format("woff2");
 }
 
+* {
+	box-sizing: border-box;
+}
+
 :root {
 	font-family: "Inter", sans-serif;
 	cursor: url("/assets/images/cursors/cursor_default.png"), auto;
@@ -83,7 +87,7 @@ footer {
 }
 
 #center {
-	min-width: 500px;
+	width: 500px;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -103,6 +107,34 @@ footer {
 	gap: 10px;
 
 	flex-grow: 1;
+}
+
+#gallery {
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+}
+
+#gallery > a {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+#gallery > a > img {
+	width: 100%;
+	height: min-content;
+	scale: 1;
+	border: 1px solid black;
+	cursor: url("/assets/images/cursors/cursor_pointer.png"), pointer;
+
+	transition-duration: 150ms;
+}
+
+#gallery > a > img:hover {
+	z-index: 1;
+	scale: 1.05;
 }
 
 nav {
@@ -175,7 +207,6 @@ h6 {
 nav>a {
 	background-color: white;
 	border: 1px solid black;
-	box-sizing: border-box;
 	padding: 10px;
 
 	box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.25);
@@ -233,13 +264,13 @@ code {
 	width: 88px;
 	height: 31px;
 
-	/* outline: 1px solid black;
-	box-sizing: border-box; */
+	/* outline: 1px solid black; */
 }
 
 .button-88x31>* {
 	width: 100%;
 	height: 100%;
+	scale: 1;
 	transition-duration: 150ms;
 }
 
@@ -320,6 +351,7 @@ code {
 #hero-image {
 	margin: 0px auto;
 	width: 100px;
+	scale: 1;
 	transition-duration: 150ms;
 	filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.4));
 	-webkit-filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.4));
