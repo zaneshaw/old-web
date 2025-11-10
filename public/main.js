@@ -140,13 +140,6 @@ if (main.dataset["maincontent"] != undefined) {
 	}
 }
 
-const statsLS = window.localStorage.getItem("stats");
-if (statsLS) {
-	const stats = JSON.parse(statsLS);
-	document.getElementById("stats-views").innerText = stats.views;
-	document.getElementById("stats-followers").innerText = stats.followers;
-}
-
 const defaultSettings = {
 	bgm: true,
 	squid: true,
@@ -283,11 +276,20 @@ window.addEventListener("load", () => {
 	});
 });
 
-fetch("https://nekoweb.org/api/site/info/squidee.nekoweb.org")
-	.then((res) => res.json())
-	.then((json) => {
-		document.getElementById("stats-views").innerText = json.views;
-		document.getElementById("stats-followers").innerText = json.followers;
+const statsLS = window.localStorage.getItem("stats");
+if (statsLS) {
+	const stats = JSON.parse(statsLS);
+	document.getElementById("stats-views").innerText = stats.views;
+	document.getElementById("stats-followers").innerText = stats.followers;
+}
 
-		window.localStorage.setItem("stats", JSON.stringify({ views: json.views, followers: json.followers }));
-	});
+if (!statsLS || Date.now() - JSON.parse(statsLS)["time_fetched"] > 60000) {
+	fetch("https://nekoweb.org/api/site/info/squidee.nekoweb.org")
+		.then((res) => res.json())
+		.then((json) => {
+			document.getElementById("stats-views").innerText = json.views;
+			document.getElementById("stats-followers").innerText = json.followers;
+
+			window.localStorage.setItem("stats", JSON.stringify({ time_fetched: Date.now(), views: json.views, followers: json.followers }));
+		});
+}
