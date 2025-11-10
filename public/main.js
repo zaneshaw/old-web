@@ -28,13 +28,14 @@ let layout =
 					<div>
 						<h2>my badge</h2>
 						<a class="button-88x31"><img src="/assets/images/badges/88x31_squidee.gif" alt="squidee" /></a>
-						<textarea rows="3" onclick="this.select()" class="hide-scroll-buttons" style="resize: none; width: 100%;">${badgeSnippet}</textarea>
+						<textarea rows="3" onclick="this.select()" class="hide-scrollbar-buttons" style="resize: none; width: 100%;">${badgeSnippet}</textarea>
 					</div>
 					<div>
 						<h2>sitemap</h2>
 						<ul class="unstyled-ul">
 							<li><a href="/index.html" class="link">me</a></li>
 							<li><a href="/stuff.html" class="link">stuff</a></li>
+							<li><a href="/gallery.html" class="link">gallery</a></li>
 							<li><a href="/playlist.html" class="link">playlist</a></li>
 							<li><a href="/updates.html" class="link">updates</a></li>
 							<li><a href="/squid.html" class="link">squid</a></li>
@@ -43,7 +44,7 @@ let layout =
 					<a href="/updates.html" id="whats-new">
 						<h2>what's new?</h2>
 						<ul class="unstyled-ul">
-							<li>10-11-25 Nekoweb</li>
+							<li>10-11-25 gallery</li>
 							<li>09-11-25 bg music</li>
 							<li>07-11-25 new badge</li>
 						</ul>
@@ -137,13 +138,6 @@ if (main.dataset["maincontent"] != undefined) {
 		script.src = src;
 		document.body.appendChild(script);
 	}
-}
-
-const statsLS = window.localStorage.getItem("stats");
-if (statsLS) {
-	const stats = JSON.parse(statsLS);
-	document.getElementById("stats-views").innerText = stats.views;
-	document.getElementById("stats-followers").innerText = stats.followers;
 }
 
 const defaultSettings = {
@@ -282,11 +276,20 @@ window.addEventListener("load", () => {
 	});
 });
 
-fetch("https://nekoweb.org/api/site/info/squidee.nekoweb.org")
-	.then((res) => res.json())
-	.then((json) => {
-		document.getElementById("stats-views").innerText = json.views;
-		document.getElementById("stats-followers").innerText = json.followers;
+const statsLS = window.localStorage.getItem("stats");
+if (statsLS) {
+	const stats = JSON.parse(statsLS);
+	document.getElementById("stats-views").innerText = stats.views;
+	document.getElementById("stats-followers").innerText = stats.followers;
+}
 
-		window.localStorage.setItem("stats", JSON.stringify({ views: json.views, followers: json.followers }));
-	});
+if (!statsLS || Date.now() - JSON.parse(statsLS)["time_fetched"] > 60000) {
+	fetch("https://nekoweb.org/api/site/info/squidee.nekoweb.org")
+		.then((res) => res.json())
+		.then((json) => {
+			document.getElementById("stats-views").innerText = json.views;
+			document.getElementById("stats-followers").innerText = json.followers;
+
+			window.localStorage.setItem("stats", JSON.stringify({ time_fetched: Date.now(), views: json.views, followers: json.followers }));
+		});
+}
