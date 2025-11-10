@@ -1,5 +1,5 @@
 const main = document.querySelector("main");
-const badgeSnippet = `<a href="https://squidee.neocities.org"><img src="https://squidee.neocities.org/img/badges/88x31_squidee.gif"></a>`;
+const badgeSnippet = `<a href="https://squidee.nekoweb.org"><img src="https://squidee.nekoweb.org/img/badges/88x31_squidee.gif"></a>`;
 
 const scripts = ["oneko.js", "underwater_effect.js", "howler.js"];
 
@@ -43,8 +43,8 @@ let layout =
 					<a href="updates.html" id="whats-new">
 						<h2>what's new?</h2>
 						<ul class="unstyled-ul">
+							<li>10-11-25 Nekoweb</li>
 							<li>09-11-25 bg music</li>
-							<li>08-11-25 neocities</li>
 							<li>07-11-25 new badge</li>
 						</ul>
 					</a>
