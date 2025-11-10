@@ -123,7 +123,7 @@ if (main.dataset["maincontent"] != undefined) {
 	layout = layout.replace("%COOL MAIN CONTENT%", main.outerHTML);
 	main.outerHTML = layout;
 
-	for (src of scripts) {
+	for (const src of scripts) {
 		const script = document.createElement("script");
 		script.src = src;
 		document.body.appendChild(script);
@@ -240,7 +240,7 @@ window.addEventListener("load", () => {
 	const bgmSeek = window.sessionStorage.getItem("bgm_seek");
 
 	bgm = new Howl({
-		src: ["https://proxy.corsfix.com/?https://squidee.dev/aqua_alaganza_16k.opus"],
+		src: ["https://squidee.dev/aqua_alaganza_16k.opus"],
 		preload: true,
 		loop: true,
 		volume: bgmVolume,
