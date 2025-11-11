@@ -1,7 +1,7 @@
 const main = document.querySelector("main");
 const badgeSnippet = `<a href="https://squidee.nekoweb.org"><img src="https://squidee.nekoweb.org/assets/images/badges/88x31_squidee.gif"></a>`;
 
-const scripts = ["oneko.js", "underwater_effect.js", "howler.js"];
+const scripts = ["/oneko.js", "/underwater_effect.js", "/howler.js"];
 
 let bgm;
 
@@ -50,7 +50,7 @@ let layout =
 						</ul>
 					</a>
 				</div>
-				<div class="container" style="flex-grow: 0;">
+				<div class="container" style="flex-grow: 0; gap: 5px;">
 					<div>
 						<h2>stats</h2>
 						<ul class="unstyled-ul">
@@ -58,6 +58,7 @@ let layout =
 							<li>followers: <i id="stats-followers" style="float: right;">...</i></li>
 						</ul>
 					</div>
+					<iframe src="https://nekoweb.org/frame/follow" id="follow-button"></iframe>
 				</div>
 			</div>
 
