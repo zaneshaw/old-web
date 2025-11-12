@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<style>
+			@font-face {
+				font-family: basiic;
+				font-style: normal;
+				font-weight: 400;
+				font-display: fallback;
+				src: url("/assets/fonts/basiic.ttf") format("truetype");
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				position: relative;
+				margin: 0px;
+				overflow: hidden;
+				font-family: basiic, sans-serif;
+			}
+
+			button {
+				background: none;
+				color: inherit;
+				border: none;
+				padding: 0;
+				font: inherit;
+				cursor: pointer;
+				outline: inherit;
+				width: max-content;
+			}
+
+			p {
+				margin: 0px;
+			}
+
+			#pet {
+				position: relative;
+				width: 170px;
+				height: 170px;
+				background-color: white;
+			}
+
+			#debug {
+				position: absolute;
+				top: 0px;
+				left: 170px;
+				height: 100%;
+				width: 170px;
+				color: white;
+				background-color: black;
+				margin: 0px;
+			}
+
+			#squid {
+				position: absolute;
+				z-index: 5;
+				bottom: 20px;
+				left: 50%;
+				transform: translateX(-50%);
+				height: 50px;
+
+				> img {
+					width: 100%;
+					height: 100%;
+				}
+			}
+
+			.button {
+				padding: 2px 4px;
+				color: white;
+				background-color: rgb(195, 0, 255);
+			}
+
+			.nav-buttons {
+				display: flex;
+				gap: 4px;
+				padding: 4px;
+				align-items: center;
+			}
+
+			.money {
+				color: white;
+			}
+
+			.page {
+				position: relative;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 100%;
+				display: none;
+				background-size: 100% 100%;
+			}
+
+			.page#home {
+				background-image: url("/assets/images/pet/bg/sidewalk.jpeg");
+			}
+
+			.page#shop {
+				background-image: url("/assets/images/pet/bg/shop_TEMP.png");
+
+				> #shop-shelves {
+					position: absolute;
+					top: 30px;
+					width: 100%;
+					height: 100px;
+
+					display: grid;
+					grid-template: 45px 45px / 45px 45px 45px;
+					justify-content: center;
+					gap: 10px;
+
+					> img {
+						width: 100%;
+						height: 100%;
+						cursor: pointer;
+					}
+				}
+
+				> #shop-nav {
+					position: absolute;
+					bottom: 0px;
+					width: 100%;
+					height: 30px;
+					gap: 5px;
+					padding: 0px 5px;
+
+					display: flex;
+					justify-content: space-between;
+
+					> #shop-helper {
+						flex-grow: 1;
+						color: white;
+						background-color: brown;
+					}
+
+					> button {
+						color: white;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						height: 100%;
+						width: 30px;
+
+						> span {
+							pointer-events: none;
+							font-size: 40px;
+							margin-bottom: 7px;
+						}
+					}
+				}
+			}
+
+			.page#casino {
+				background-image: url("/assets/images/pet/bg/casino.jpeg");
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+========== CREDIT ==========
+FONT
+basiic: https://cinni.net/?z=/font
+============================
+-->
+		<div id="pet">
+			<div class="page" id="home">
+				<div class="nav-buttons" style="float: right">
+					<button class="button" onclick="switchPage('shop')">shop</button>
+					<button class="button" onclick="switchPage('casino')">casino</button>
+					<span class="money">$0</span>
+				</div>
+
+				<button id="squid"><img src="/assets/images/pet/squid.png" /></button>
+			</div>
+
+			<div class="page" id="shop">
+				<div class="nav-buttons">
+					<button class="button" onclick="switchPage('home')">&lt; home</button>
+					<span class="money" style="margin-left: auto;">$0</span>
+				</div>
+
+				<div id="shop-shelves" data-page="0"></div>
+
+				<div id="shop-nav">
+					<button onclick="shopRender(-1)"><span>&#9754;</span></button>
+					<div id="shop-helper"></div>
+					<button onclick="shopRender(1)"><span>&#9755;</span></button>
+				</div>
+			</div>
+
+			<div class="page" id="casino">
+				<div class="nav-buttons">
+					<button class="button" onclick="switchPage('home')">&lt; home</button>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			const pref = "VIRTUALSQUID";
+			const debug = true;
+			const starterNames = ["squid", "squid guy", "squid fellow", "ugly blob"];
+			const itemDatabase = [
+				{ id: "cool_boots", name: "Cool boots", type: "clothing", image: "cool_boots.png" },
+				{ id: "corn", name: "Corn", type: "food", image: "corn.png" },
+				{ id: "item3", name: "Item 3", type: "clothing", image: null },
+				{ id: "item4", name: "Item 4", type: "clothing", image: null },
+				{ id: "item5", name: "Item 5", type: "clothing", image: null },
+				{ id: "item6", name: "Item 6", type: "clothing", image: null },
+				{ id: "item7", name: "Item 7", type: "clothing", image: null },
+				{ id: "item8", name: "Item 8", type: "clothing", image: null },
+				{ id: "item9", name: "Item 9", type: "clothing", image: null },
+				{ id: "item10", name: "Item 10", type: "clothing", image: null },
+			];
+			const shopItems = [
+				{ id: "cool_boots", price: 5 },
+				{ id: "corn", price: 3 },
+				{ id: "item3", price: 7 },
+				{ id: "item4", price: 8 },
+				{ id: "item5", price: 9 },
+				{ id: "item6", price: 10 },
+				{ id: "item7", price: 11 },
+				{ id: "item8", price: 12 },
+				{ id: "item9", price: 13 },
+				{ id: "item10", price: 14 },
+			];
+
+			const petEl = document.querySelector("#pet");
+			const squidEl = document.querySelector("#squid>img");
+			let data = {
+				data_version: 1,
+				last_save: -1,
+				name: "no name",
+				money: 10,
+				stats: {
+					happiness: 100,
+					enrichment: 0,
+					hunger: 30,
+					depression: 0,
+				},
+				skills: {
+					resilience: { level: 0, time: -1 },
+					agility: { level: 0, time: -1 },
+					swag: { level: 0, time: -1 },
+				},
+				stuff: [{ id: "corn", quantity: 5 }],
+				save: function () {
+					this.last_save = Date.now();
+					window.localStorage.setItem("pet_data", JSON.stringify(this));
+					console.debug(`[${pref}:SAVE] data saved.`);
+				},
+				load: function () {
+					const loaded = JSON.parse(window.localStorage.getItem("pet_data"));
+
+					if (loaded) {
+						console.debug(`[${pref}:LOAD] data loaded.`);
+						return { ...this, ...loaded };
+					} else {
+						console.debug(`[${pref}:LOAD] no pet found in localstorage.`);
+						return null;
+					}
+				},
+			};
+
+			let currentPageId = "";
+
+			function updateMoney(change) {
+				let changed;
+
+				if (data.money + change >= 0) {
+					data.money = data.money + change;
+					data.save();
+
+					console.debug(`[${pref}] money changed by ${change}. now ${data.money}.`);
+					changed = true;
+				} else {
+					console.debug(`[${pref}] money cannot be changed by ${change}. would be ${data.money + change}.`);
+					changed = false;
+				}
+
+				for (const moneyEl of document.querySelectorAll(".money")) moneyEl.innerText = `$${data.money}`;
+
+				return changed;
+			}
+
+			function updateStat(stat, change) {
+				switch (stat) {
+					case "happiness":
+					case "enrichment":
+					case "hunger":
+					case "depression":
+						break;
+					default:
+						console.error(`[${pref}] no stat "${stat}".`);
+						return;
+				}
+
+				data.stats[stat] = Math.max(0, Math.min(data.stats[stat] + change, 100));
+				data.save();
+
+				console.debug(`[${pref}] stat "${stat}" changed by ${change}.`);
+			}
+
+			function registerListeners() {
+				window.addEventListener("beforeunload", () => {
+					// data.save();
+				});
+
+				squidEl.addEventListener("click", () => {
+					updateStat("happiness", 1);
+				});
+
+				document.addEventListener("mouseover", (e) => {
+					if (currentPageId == "shop") {
+						const shopHelper = document.querySelector("#shop-helper");
+						if (e.target.classList.contains("shop-item-button")) {
+							shopHelper.innerHTML = `<p><b>${itemLookup(shopItems[e.target.dataset.index].id).name}</b></p>`;
+							shopHelper.innerHTML += `<p>price $${shopItems[e.target.dataset.index].price}</p>`;
+						} else {
+							shopHelper.innerText = "click item to buy it";
+						}
+					}
+				});
+			}
+
+			function startDebug() {
+				const debugEl = document.createElement("pre");
+				debugEl.id = "debug";
+				petEl.appendChild(debugEl);
+
+				// todo: benchmark this
+				let dataCopy = JSON.stringify({ ...data, currentPageId });
+				setInterval(() => {
+					const currentData = JSON.stringify({ ...data, currentPageId });
+
+					if (currentData !== dataCopy) {
+						dataCopy = currentData;
+						lastPageId = currentPageId;
+
+						const debugLines = [
+							`name: "${data.name}"`,
+							`money: ${data.money}`,
+							"",
+							`hap: ${data.stats.happiness.toString().padEnd(3, " ")}\tenr: ${data.stats.enrichment}`,
+							`hun: ${data.stats.hunger.toString().padEnd(3, " ")}\tdep: ${data.stats.depression}`,
+							"",
+							`res: ${data.skills.resilience.level.toString().padEnd(2, " ")}\tagi: ${data.skills.agility.level.toString().padEnd(2, " ")}\tswa: ${data.skills.swag.level}`,
+							"",
+							`page: "${currentPageId}"`,
+						];
+
+						debugEl.innerText = debugLines.join("\n");
+					}
+				}, 50);
+			}
+
+			function newPet() {
+				console.debug(`[${pref}] creating new pet...`);
+
+				const nameIndex = Math.floor(Math.random() * starterNames.length);
+				data.name = starterNames[nameIndex];
+				console.debug(`[${pref}] data.name = "${starterNames[nameIndex]}"`);
+
+				data.save();
+			}
+
+			function switchPage(pageId) {
+				const newPage = document.querySelector(`.page#${pageId}`);
+				if (newPage) {
+					if (pageId == "shop") {
+						shopRender(0);
+					}
+
+					if (currentPageId) {
+						document.querySelector(`.page#${currentPageId}`).style.display = "none";
+					}
+					newPage.style.display = "block";
+					currentPageId = pageId;
+
+					console.debug(`[${pref}] page switched to "${pageId}".`);
+				} else {
+					console.error(`[${pref}] no page "${pageId}".`);
+				}
+			}
+
+			function itemLookup(itemId) {
+				const index = itemDatabase.findIndex((item) => item.id == itemId);
+				return index != -1 ? itemDatabase[index] : null;
+			}
+
+			function shopBuy(itemIndex) {
+				if (!updateMoney(-shopItems[itemIndex].price)) return;
+
+				const databaseIndex = itemDatabase.indexOf(itemLookup(shopItems[itemIndex].id));
+				const stuffIndex = data.stuff.findIndex((thing) => thing.id == itemDatabase[databaseIndex].id);
+
+				if (stuffIndex != -1) {
+					data.stuff[stuffIndex].quantity++;
+				} else {
+					data.stuff.push({ id: itemDatabase[databaseIndex].id, quantity: 1 });
+				}
+
+				console.log(JSON.stringify(data.stuff, 0, 4));
+
+				data.save();
+			}
+
+			function shopRender(pageIndexChange) {
+				const shelves = document.querySelector("#shop-shelves");
+				const pageCount = Math.ceil(shopItems.length / 6);
+				const pageIndex = Math.max(0, Math.min(parseInt(shelves.dataset.page) + pageIndexChange, pageCount - 1));
+
+				shelves.innerHTML = "";
+				for (let i = pageIndex * 6; i < Math.min(shopItems.length, pageIndex * 6 + 6); i++) {
+					const item = document.createElement("img");
+					item.classList.add("shop-item-button");
+					item.dataset.index = i;
+					item.onclick = () => shopBuy(i);
+
+					const image = itemLookup(shopItems[i].id).image;
+					item.src = `/assets/images/pet/items/${image ?? "placeholder.png"}`;
+
+					shelves.appendChild(item);
+				}
+
+				document.querySelector("#shop-helper").innerText = "click item to buy it";
+			}
+
+			function main() {
+				registerListeners();
+				if (debug) startDebug();
+
+				const loadedData = data.load();
+				if (loadedData) {
+					console.debug(loadedData);
+					data = loadedData;
+				} else {
+					newPet();
+				}
+
+				updateMoney(0);
+				switchPage("home");
+			}
+
+			main();
+		</script>
+	</body>
+</html>
