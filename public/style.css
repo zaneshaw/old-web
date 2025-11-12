@@ -186,7 +186,11 @@ nav > a {
 	z-index: 1;
 
 	transition-duration: 150ms;
-	transition-property: color, box-shadow, -webkit-box-shadow, -moz-box-shadow;
+	transition-property:
+		color,
+		box-shadow,
+		-webkit-box-shadow,
+		-moz-box-shadow;
 }
 
 nav > a:hover {
@@ -334,7 +338,11 @@ code {
 	-webkit-filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.4));
 
 	transition-duration: 150ms;
-	transition-property: scale, transform, filter, -webkit-filter;
+	transition-property:
+		scale,
+		transform,
+		filter,
+		-webkit-filter;
 }
 
 #hero-image > img {
