@@ -317,12 +317,28 @@ if (!statsLS || Date.now() - (JSON.parse(statsLS)["time_fetched"] || 0) > 60000)
 		});
 }
 
-fetch("/version").then(async (res) => {
-	const version = await res.text();
-	fetch("https://raw.githubusercontent.com/zaneshaw/squidee.nekoweb.org/refs/heads/main/public/version").then(async (res) => {
-		const gitVersion = await res.text();
-		console.log("version:", version);
-		console.log("gitVersion:", gitVersion);
-		console.log(version == gitVersion ? "up to date" : "outdated");
+function notifyOutdated() {
+	console.error("you're seeing an outdated version of the website. press ctrl-f5 to update.");
+
+	document.body.innerHTML += `<div class="container" id="outdated-notification">
+		<img src="/assets/images/warning.png" />
+		<span>you might be seeing an outdated version of the website! press <b>ctrl-f5</b> to update.</span>
+	</div>`;
+}
+
+function checkVersion() {
+	fetch("/version").then(async (res) => {
+		const version = (await res.text()).trim();
+
+		if (version != "dev") {
+			fetch("https://api.github.com/repos/zaneshaw/squidee.nekoweb.org/actions/workflows/deploy.yaml/runs?per_page=1").then(async (res) => {
+				const ghJson = await res.json();
+				const ghVersion = `${ghJson.workflow_runs[0].id}${ghJson.workflow_runs[0].run_attempt}`;
+
+				if (version != ghVersion) notifyOutdated();
+			});
+		}
 	});
-});
+}
+
+checkVersion();
