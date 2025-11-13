@@ -316,3 +316,13 @@ if (!statsLS || Date.now() - (JSON.parse(statsLS)["time_fetched"] || 0) > 60000)
 			window.localStorage.setItem("stats", JSON.stringify({ time_fetched: Date.now(), views: json.views, followers: json.followers }));
 		});
 }
+
+fetch("/version").then(async (res) => {
+	const version = await res.text();
+	fetch("https://raw.githubusercontent.com/zaneshaw/squidee.nekoweb.org/refs/heads/main/public/version").then(async (res) => {
+		const gitVersion = await res.text();
+		console.log("version:", version);
+		console.log("gitVersion:", gitVersion);
+		console.log(version == gitVersion ? "up to date" : "outdated");
+	});
+});
