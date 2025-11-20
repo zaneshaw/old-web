@@ -1,5 +1,5 @@
 const main = document.querySelector("main");
-const badgeSnippet = `<a href="https://squidee.nekoweb.org"><img src="https://squidee.nekoweb.org/assets/images/badges/88x31_squidee.gif"></a>`;
+const buttonSnippet = `<a href="https://squidee.nekoweb.org"><img src="https://squidee.nekoweb.org/assets/images/buttons/88x31_squidee.gif"></a>`;
 
 const scripts = ["/scripts/oneko.js", "/scripts/underwater_effect.js", "/scripts/howler.js"];
 
@@ -26,9 +26,10 @@ let layout =
 						<img src="/assets/images/zanesquid3_small.png" alt="me with a squid hat" />
 					</a>
 					<div>
-						<h2>my badge</h2>
-						<a class="button-88x31"><img src="/assets/images/badges/88x31_squidee.gif" alt="squidee" /></a>
-						<textarea rows="3" onclick="this.select()" class="hide-scrollbar-buttons" style="resize: none; width: 100%;">${badgeSnippet}</textarea>
+						<h2>my button</h2>
+						<a class="button-88x31"><img src="/assets/images/buttons/88x31_squidee.gif" alt="squidee" /></a>
+						<textarea rows="3" onclick="this.select()" class="hide-scrollbar-buttons" style="resize: none; width: 100%;">${buttonSnippet}</textarea>
+						<span>plz hotlink :&rpar;</span>
 					</div>
 					<div>
 						<h2>sitemap</h2>
@@ -44,7 +45,7 @@ let layout =
 						<ul class="unstyled-ul">
 							<li>10-11-25 gallery</li>
 							<li>09-11-25 bg music</li>
-							<li>07-11-25 new badge</li>
+							<li>07-11-25 new button</li>
 						</ul>
 					</a>
 				</div>
@@ -92,12 +93,12 @@ let layout =
 							</li>
 						</ul>
 					</div>
-					<div class="badge-list">
+					<div class="button-list">
 						<h2>friends</h2>
-						<a href="https://pincasplace.neocities.org/" target="_blank" class="button-88x31"><img src="/assets/images/badges/88x31_pinca.gif" alt="pinca" /></a>
+						<a href="https://pincasplace.neocities.org/" target="_blank" class="button-88x31"><img src="https://pincasplace.neocities.org/images/badges/88x31_pinca.gif" alt="pinca" /></a>
 						<a href="https://mackos.nekoweb.org/" target="_blank" class="button-88x31"><span style="background-color: hsl(0, 0%, 80%);">mackOS</span></a>
 					</div>
-					<div class="badge-list">
+					<div class="button-list">
 						<h2>webrings</h2>
 						<div style="display: flex; align-items: center; gap: 10px; flex-direction: row-reverse; width: min-content;">
 							<map name="noaimini14">
@@ -122,7 +123,7 @@ let layout =
 
 		<footer class="container">
 			<a href="http://www.acasystems.com/en/button-maker/" target="_blank">
-				<img src="/assets/images/badges/80x15_human_made.png" alt="human made 80x15 badge" />
+				<img src="/assets/images/buttons/80x15_human_made.png" alt="human made 80x15 button" />
 			</a>
 			<div id="footer-center">
 				<span>🦑</span>

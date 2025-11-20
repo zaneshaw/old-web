@@ -370,7 +370,7 @@ code {
 	-webkit-filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.25));
 }
 
-.badge-list {
+.button-list {
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
@@ -412,7 +412,7 @@ footer > #footer-center {
 	visibility: hidden;
 }
 
-#badge-grid {
+#button-grid {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 3px;
