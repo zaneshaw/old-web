@@ -19,7 +19,7 @@
 }
 
 :root {
-	font-family: "Inter", sans-serif;
+	font-family: Inter, sans-serif;
 	cursor: url("/assets/images/cursors/cursor_default.png"), auto;
 }
 
@@ -250,7 +250,7 @@ textarea,
 input,
 textarea {
 	font-size: 12px;
-	font-family: "Inter", sans-serif;
+	font-family: Inter, sans-serif;
 }
 
 .btn {
