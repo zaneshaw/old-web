@@ -200,11 +200,7 @@ nav > a {
 	z-index: 1;
 
 	transition-duration: 150ms;
-	transition-property:
-		color,
-		box-shadow,
-		-webkit-box-shadow,
-		-moz-box-shadow;
+	transition-property: color, box-shadow, -webkit-box-shadow, -moz-box-shadow;
 }
 
 nav > a:hover {
@@ -243,6 +239,28 @@ nav > a.nav-external::after {
 
 code {
 	font-size: 12px;
+}
+
+input,
+textarea,
+.btn {
+	border: 1px solid black;
+}
+
+input,
+textarea {
+	font-size: 12px;
+	font-family: "Inter", sans-serif;
+}
+
+.btn {
+	background-color: white;
+	transition-duration: 150ms;
+}
+
+.btn:hover {
+	color: white;
+	background-color: #a574a8;
 }
 
 .button-88x31 {
@@ -352,11 +370,7 @@ code {
 	-webkit-filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.4));
 
 	transition-duration: 150ms;
-	transition-property:
-		scale,
-		transform,
-		filter,
-		-webkit-filter;
+	transition-property: scale, transform, filter, -webkit-filter;
 }
 
 #hero-image > img {
@@ -392,9 +406,7 @@ code {
 #email {
 	padding: 0px 5px;
 	user-select: none;
-	cursor:
-		url("/assets/images/cursors/cursor_error.png") 7 7,
-		not-allowed;
+	cursor: url("/assets/images/cursors/cursor_error.png") 7 7, not-allowed;
 }
 
 footer > #footer-center {
@@ -543,9 +555,7 @@ footer > #footer-center {
 	width: 16px;
 	height: 16px;
 	background: silver;
-	box-shadow:
-		inset 1px 1px #dfdfdf,
-		inset -1px -1px gray;
+	box-shadow: inset 1px 1px #dfdfdf, inset -1px -1px gray;
 	border: 1px solid;
 	border-color: silver #000 #000 silver;
 }
@@ -562,15 +572,11 @@ footer > #footer-center {
 }
 
 ::-webkit-scrollbar-thumb:vertical {
-	cursor:
-		url("/assets/images/cursors/cursor_scrollv.png") 7 7,
-		n-resize;
+	cursor: url("/assets/images/cursors/cursor_scrollv.png") 7 7, n-resize;
 }
 
 ::-webkit-scrollbar-thumb:horizontal {
-	cursor:
-		url("/assets/images/cursors/cursor_scrollh.png") 7 7,
-		e-resize;
+	cursor: url("/assets/images/cursors/cursor_scrollh.png") 7 7, e-resize;
 }
 
 ::-webkit-scrollbar-button:single-button {

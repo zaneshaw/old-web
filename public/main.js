@@ -37,15 +37,16 @@ let layout =
 							<li><a href="/index.html" class="link">me</a></li>
 							<li><a href="/stuff.html" class="link">stuff</a></li>
 							<li><a href="/gallery.html" class="link">gallery</a></li>
+							<li><a href="/guestbook.html" class="link">guestbook</a></li>
 							<li><a href="/updates.html" class="link">updates</a></li>
 						</ul>
 					</div>
 					<a href="/updates.html" id="whats-new">
 						<h2>what's new?</h2>
 						<ul class="unstyled-ul">
+							<li>23-11-25 guestbook!!!</li>
 							<li>10-11-25 gallery</li>
 							<li>09-11-25 bg music</li>
-							<li>07-11-25 new button</li>
 						</ul>
 					</a>
 				</div>
@@ -66,7 +67,7 @@ let layout =
 					<a href="/index.html">me</a>
 					<a href="/stuff.html">stuff</a>
 					<a href="/gallery.html">gallery</a>
-					<a href="https://squidee.dev/guestbook" class="nav-external">guestbook</a>
+					<a href="/guestbook.html">guestbook</a>
 				</nav>
 				%COOL MAIN CONTENT%
 			</div>
