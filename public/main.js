@@ -28,7 +28,7 @@ let layout =
 					<div>
 						<h2>my button</h2>
 						<a class="button-88x31"><img src="/assets/images/buttons/88x31_squidee.gif" alt="squidee" /></a>
-						<textarea rows="3" onclick="this.select()" class="hide-scrollbar-buttons" style="resize: none; width: 100%;">${buttonSnippet}</textarea>
+						<textarea rows="3" onclick="this.select()" class="hide-scrollbar-buttons" style="resize: none; width: 100%; word-break: break-all;">${buttonSnippet}</textarea>
 						<span>plz hotlink :&rpar;</span>
 					</div>
 					<div>
