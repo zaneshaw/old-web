@@ -141,6 +141,7 @@ let layout =
 			<div class="water" id="water-two"><div></div></div>
 			<div id="underwater-effect"></div>
 			<div id="squid"></div>
+			<div id="crt"></div>
 		</div>`;
 
 if (main.dataset["maincontent"] != undefined) {

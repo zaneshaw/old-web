@@ -355,6 +355,21 @@ textarea {
 	color: white;
 }
 
+/* https://oversurge.nekoweb.org/v1.5-traditional/home/ */
+#crt::before {
+	content: " ";
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+	z-index: 2147483647;
+	background-size: 100% 2px, 3px 100%;
+	pointer-events: none;
+}
+
 #oneko-spawn {
 	position: absolute;
 	right: 24px;
@@ -462,7 +477,7 @@ footer > #footer-center {
 
 #poster-thing {
 	transition: 150ms;
-	z-index: 2147483647;
+	z-index: 2147483646;
 }
 
 #poster-thing:hover {
