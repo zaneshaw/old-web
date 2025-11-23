@@ -137,11 +137,13 @@ let layout =
 		</footer>
 
 		<div id="screen-overlay">
+			<div id="underwater-effect"></div>
+			<div id="crt"></div>
+		</div>
+		<div id="screen-underlay">
 			<div class="water"><div></div></div>
 			<div class="water" id="water-two"><div></div></div>
-			<div id="underwater-effect"></div>
 			<div id="squid"></div>
-			<div id="crt"></div>
 		</div>`;
 
 if (main.dataset["maincontent"] != undefined) {
